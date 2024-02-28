@@ -5,4 +5,5 @@ from note_api.models import Note
 class NoteSerializer(ModelSerializer):
     class Meta:
         model = Note
-        fields = ['id', 'title', 'content', 'created', 'updated']
+        fields = ['id', 'title', 'content',
+                  'created', 'updated']  # or '__all__'
