@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Our apps
     'note_api.apps.NoteApiConfig',
     # Third-party apps
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
