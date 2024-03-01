@@ -47,7 +47,7 @@ def get_routes(request):
 
 class NoteAPI(APIView):
     def get(self, request):
-        notes = Note.objects.all()
+        notes = Note.objects.all().order_by('-updated')
         serializer = NoteSerializer(notes, many=True)
 
         return Response(serializer.data)
@@ -72,3 +72,7 @@ class NoteDetailAPI(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        note = self.get_note(pk)
+        note.delete()
