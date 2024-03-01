@@ -6,6 +6,7 @@ from note_api.models import Note
 from note_api.serializers import NoteSerializer
 from rest_framework import status
 from django.http import Http404
+
 # Create your views here.
 
 
