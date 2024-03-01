@@ -64,3 +64,11 @@ class NoteDetailAPI(APIView):
         note = self.get_note(pk)
         serializer = NoteSerializer(note)
         return Response(serializer.data)
+
+    def put(self, request, pk):
+        note = self.get_note(pk)
+        serializer = NoteSerializer(note, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
